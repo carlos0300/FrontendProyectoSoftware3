@@ -4,6 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import axios from 'axios';
+
+const loaddata = () =>{
+axios.get("localhost:3000/getInventario")
+.then(resp =>{
+  console.log(resp.data)
+})
+}
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
