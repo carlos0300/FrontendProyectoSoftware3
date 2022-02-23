@@ -3,7 +3,7 @@ import './App.css';
 import { Component } from 'react';
 import axios from 'axios';
 
-const url = "http://localhost:3001/getInventario"
+const url = "localhost:3001/getInventario"
 
 class App extends Component{
 
@@ -29,7 +29,7 @@ componentDidMount(){
       <h2>Nombres</h2> <br/>
         {this.state.data.map(users=>{
           return(
-            <p>{users.name}</p>
+            <p>{users.title}</p>
           )
         })}
       </center>
