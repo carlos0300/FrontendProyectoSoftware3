@@ -1,36 +1,41 @@
 import './App.css';
-import Welcome from './Components/Menu';
 
-import{BrowserRouter as Router, Routes, Route} from 'react-router-dom';
-import UserContainer from './Components/UserContainer';
+import { Component } from 'react';
+import axios from 'axios';
+
+const url = "http://localhost:3001/getInventario"
+
+class App extends Component{
+
+state = {
+  data:[]
+}
+
+peticionGet = () => {
+  axios.get(url).then(response => {
+    this.setState({data: response.data});
+  })
+}
 
 
-import { useEffect, useState } from 'react';
+componentDidMount(){
+  this.peticionGet();
+}
 
-function App() {
-  const url = "127.0.0.1:3000/getInventario"
-  //https://jsonplaceholder.typicode.com/todos
-  const [todos, setTodos] = useState()
-  const fetchApi = async () => {
-    const response = await fetch(url)
-    const responseJSON = await response.json()
-    setTodos(responseJSON)
-    }
-
-    useEffect(()=> {
-      fetchApi()
-    }, [])
-  
+    render(){
     return (
     <div>
-      Hola Mundo
-      <ul>
-        {!todos ? 'Cargando..' :
-        todos.map( (todo => <li>{todo.title}</li> ))
-        }
-      </ul>
+      <center>
+      <h2>Nombres</h2> <br/>
+        {this.state.data.map(users=>{
+          return(
+            <p>{users.name}</p>
+          )
+        })}
+      </center>
     </div>
   );
+}
 }
 
 export default App;
