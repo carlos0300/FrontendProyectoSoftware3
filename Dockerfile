@@ -1,11 +1,6 @@
-FROM node:12-alpine3.12 AS build
-WORKDIR /app
-COPY package.json ./
-RUN npm install
-COPY . .
-RUN npm run build
-
-FROM nginx:1.19.0-alpine AS prod-stage
-COPY --from=build /app/build /usr/share/nginx/html
-EXPOSE 80
-CMD ["ginx", "-g", "daemon off;"]
+# Usa como base a nginx
+FROM nginx:1.21.4-alpine
+# Copia un archivo de configiración de nginx
+COPY nginx.conf /etc/nginx/nginx.conf
+# Copia el directorio dist en el directorio que usa nginx para publicar un web
+COPY /build /usr/share/nginx/html
