@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { render } from 'react-dom';
 import axios from 'axios';
 
-const url = "http://localhost:3001"
+const url = "http://localhost:3001/modInventario"
 
 class Formulario extends Component{
 
