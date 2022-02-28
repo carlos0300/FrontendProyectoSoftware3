@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { render } from 'react-dom';
 import axios from 'axios';
 
-const url = "http://localhost:3001/modInventario"
+const url = "http://localhost:3001/addInventario"
 
 class Formulario extends Component{
 
@@ -26,10 +26,11 @@ class Formulario extends Component{
         e.preventDefault()
         axios.post(url, this.state)
         .then(response => {
-          console.log(response)
+          alert("Producto Agregado Exitosamente")
+          window.location.reload(true)
         })
         .catch(error =>{
-            console.log(error)
+            alert("error")
         })
         console.log(this.state)
     }
@@ -40,6 +41,7 @@ class Formulario extends Component{
         const   {codigo, descripcion, precio} = this.state
 
         return(
+            <div className=''>
                 <form className="row" onSubmit={this.submitHandler}>
                     <div className="col-3">
                         <input type="text" placeholder="Código" className="form-control" name="codigo" value={codigo} onChange={this.changeHandler} ></input>
@@ -52,6 +54,8 @@ class Formulario extends Component{
                     </div>
                     <button type="submit" className="btn btn-success">Enviar</button>
                 </form>
+            </div>
+                
         )
     }
 
