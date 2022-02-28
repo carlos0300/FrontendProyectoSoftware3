@@ -7,20 +7,6 @@ const url = "http://localhost:3001"
 
 class Formulario extends Component{
 
-    peticionPost = () => {
-        axios.post(url, this.state)
-        .then(response => {
-          console.log(response)
-        })
-        .catch(error =>{
-            console.log(error)
-        })
-      }
-
-      componentDidMount(){
-        this.peticionPost();
-      }
-
     constructor(props){
         super(props)
 
@@ -38,6 +24,13 @@ class Formulario extends Component{
 
     submitHandler = e => {
         e.preventDefault()
+        axios.post(url, this.state)
+        .then(response => {
+          console.log(response)
+        })
+        .catch(error =>{
+            console.log(error)
+        })
         console.log(this.state)
     }
 
