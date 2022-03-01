@@ -1,6 +1,5 @@
 import React, {Component,} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { render } from 'react-dom';
 import axios from 'axios';
 
 const url = "http://localhost:3001/addInventario"
@@ -41,20 +40,20 @@ class Formulario extends Component{
         const   {codigo, descripcion, precio} = this.state
 
         return(
-            <div className=''>
+            <div className='container '>
                 <form className="row" onSubmit={this.submitHandler}>
-                    <div className="col-3">
-                        <input type="text" placeholder="Código" className="form-control" name="codigo" value={codigo} onChange={this.changeHandler} ></input>
+                    <div className="col-3 ">
+                        <input type="text" placeholder="Código" className="form-control" name="codigo" value={codigo} required onChange={this.changeHandler} ></input>
                     </div>
-                    <div className="col-3">
-                        <input type="text" placeholder="Descripción" className="form-control" name="descripcion" value={descripcion} onChange={this.changeHandler} ></input>
+                    <div className="col-3 ">
+                        <input type="text" placeholder="Descripción" className="form-control" name="descripcion" value={descripcion} required onChange={this.changeHandler} ></input>
                     </div>
-                    <div className="col-3">
-                    <input type="text" placeholder="Precio" className="form-control" name="precio" value={precio} onChange={this.changeHandler} ></input>
+                    <div className="col-3 ">
+                    <input type="text" placeholder="Precio" className="form-control" name="precio" value={precio} required onChange={this.changeHandler} ></input>
                     </div>
-                    <button type="submit" className="btn btn-success">Enviar</button>
+                    <button type="submit" className="btn btn-success mx-auto">Agregar</button>
                 </form>
-            </div>
+                </div>
                 
         )
     }
