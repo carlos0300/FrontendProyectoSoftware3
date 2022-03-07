@@ -1,31 +1,30 @@
 import './App.css';
-
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+import Inventario from './Pages/Inventario';
 import { Component } from 'react';
-import axios from 'axios';
-import Formulario from './Components/form';
-import TablaMateriales from './Components/tablaMateriales';
+import Inicio from './Pages/Inicio';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import FormAdd from './Components/FormAdd';
+import Editar from './Pages/Editar';
+import Eliminar from './Pages/Eliminar';
 
-const url = "http://localhost:3001/getInventario"
 
-class App extends Component{
+class App extends Component {
 
-    render(){
+  render() {
     return (
-    <div className='container col-7'>
-      <br></br>
-        <center>
-          <h2 className=''><b>TABLA DE INVENTARIO</b></h2>
-          <br></br>
-          <Formulario></Formulario>
-          <br></br>
-          <TablaMateriales></TablaMateriales>
-        </center>
-      <br></br>
-</div>
-  );
-}
+      <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Inicio />} />
+            <Route path='/getInventario' element={<Inventario />} />
+            <Route path='/agregar' element={<FormAdd />} />
+            <Route path='/getInventario/:codigo' element={<Editar />} />
+            <Route path='/eliminar/:codigo' element={<Eliminar />} />
+            <Route path='*' element={<div>Not Found</div>} />
+          </Routes>
+      </BrowserRouter>
+
+    );
+  }
 }
 
 export default App;

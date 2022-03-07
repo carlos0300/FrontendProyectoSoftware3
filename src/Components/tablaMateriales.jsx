@@ -1,56 +1,56 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import { Component } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useModal } from '../Hooks/useModal';
+import FormEdit from './FormEdit';
+import { Link } from 'react-router-dom';
 
 const url = "http://localhost:3001/getInventario"
 
-class TablaMateriales extends Component{
+const TablaMateriales = () => {
 
-state = {
-  data:[]
-}
+  const [isOpenModal1, openModal1, closeModal1] = useModal(false)
 
-peticionGet = () => {
-  axios.get(url).then(response => {
-    this.setState({data: response.data});
-  })
-}
+  const [product, setProduct] = useState([])
+  useEffect(() => {
+    peticionGet()
+  }, [])
 
 
-componentDidMount(){
-  this.peticionGet();
-}
+  const peticionGet = async () => {
+    
+    const res = await axios.get(url)
+    setProduct(res.data)
+    console.log(res)
+  }
 
-    render(){
     return (
-        <div className='col-md-12'>
-            <table className='table'>
-                <thead className='bg-primary text-white'>
-                    <tr>
-                        <th>ID</th>
-                        <th>DESCRIPCIÓN</th>
-                        <th>PRECIO</th>
-                        <th>ACCIÓN</th>
-                    </tr>
-                </thead>
-            <tbody>
-                {this.state.data.map(users=>{
-            return(
-                <tr>
-                    <th>{users.codigo}</th>
-                    <td>{users.descripcion}</td>
-                    <td>{users.precio}</td>
-                    <td width='30%'><button type="button" className="btn btn-primary">Editar</button> &nbsp;&nbsp;
-                    <button type="button" className="btn btn-danger">Eliminar</button></td>
+      <div className='col-md-12'>
+        <table className='table'>
+          <thead className='bg-primary text-white'>
+            <tr>
+              <th>ID</th>
+              <th>DESCRIPCIÓN</th>
+              <th>PRECIO</th>
+              <th>ACCIÓN</th>
+            </tr>
+          </thead>
+          <tbody>
+            {product.map ((product) => (
+              <tr>
+                  <th>{product.codigo}</th>
+                  <td>{product.descripcion}</td>
+                  <td>{product.precio}</td>
+                  <td width='30%'><Link className="btn btn-primary" to={`/getInventario/${product.codigo}`}>Editar</Link> &nbsp;&nbsp;
+                    <Link to={`/eliminar/${product.codigo}`} className="btn btn-danger">Eliminar</Link></td>
                 </tr>
-            )
-            })}
-            </tbody>
+            ))}
+                
+          </tbody>
         </table>
-    </div>
-  );
-}
+      </div>
+    );
 }
 
 export default TablaMateriales;

@@ -1,0 +1,22 @@
+.modal{
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    padding-top: 100px;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(0,0,0,.85);
+}
+
+.modal.is-open{
+    display: flex;
+}
+
+.modal-container{
+    position: relative;
+}
+
+.modal-close{
+    position: absolute;
+}
