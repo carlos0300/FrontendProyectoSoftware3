@@ -6,7 +6,7 @@ function NavBar() {
 
     return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-primary fixed-top" style={{height: "5rem"}}>
+            <nav className="navbar navbar-expand-lg navbar-light" style={{height: "5rem", backgroundColor: "#0d0ae0"}}>
                 <a className="navbar-brand text-white ml-auto mt-2" href="/"><h4>Home</h4></a>
                 <a className="navbar-brand text-white mx-3 mt-2" href="/getInventario"><h4>Inventario</h4></a>
                 <a className="navbar-brand text-white mx-3 mt-2" href="#"><h4>Usuarios</h4></a>

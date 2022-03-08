@@ -11,8 +11,7 @@ class Inicio extends Component {
   render() {
     return (
       <div><NavBar></NavBar>
-        <div className='container col-7'>
-          <br /><br /><br />
+        <div className='container'>
           <Menu></Menu>
         </div>
         <div className="fixed-bottom"><Footer></Footer></div>
