@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Component } from 'react';
 import Footer from '../Components/Footer';
-import Menu from '../Components/Menu';
+import Login from '../Components/Login';
 import NavBar from '../Components/NavBar';
 
 
@@ -10,11 +10,10 @@ class Inicio extends Component {
 
   render() {
     return (
-      <div><NavBar></NavBar>
-        <div className='container'>
-          <Menu></Menu>
+      <div>
+        <div>
+          <Login></Login>
         </div>
-        <div className="fixed-bottom"><Footer></Footer></div>
       </div>
     );
   }
